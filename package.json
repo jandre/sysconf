@@ -1,0 +1,14 @@
+{
+  "name": "sysconf",
+  "version": "0.1.0",
+  "description": "native bindings for linux sysconf(3) call",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": "",
+  "author": "Jen Andre <jandre@gmail.com>",
+  "license": "MIT",
+  "gypfile": true
+}
