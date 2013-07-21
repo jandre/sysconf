@@ -7,8 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "node-gyp rebuild"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jandre/sysconf.git"
+  },
+  "keywords": [
+    "sysconf"
+  ],
   "author": "Jen Andre <jandre@gmail.com>",
   "license": "MIT",
-  "gypfile": true
+  "gypfile": true,
+  "readmeFilename": "README.md",
+  "gitHead": "06c50937c00df6e54854339bdb3f295ca82f5349",
+  "directories": {
+    "test": "tests"
+  }
 }
