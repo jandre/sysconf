@@ -2,6 +2,13 @@
 
 Node bindings for sysconf(3)
 
+```
+sysconf - get configuration information at run time
+
+#include <unistd.h>
+long sysconf(int name);
+```
+
 ## Installation
 
 ```
