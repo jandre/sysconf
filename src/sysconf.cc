@@ -15,11 +15,13 @@ using namespace node;
 using namespace v8;
 
 Handle<Value> Sysconf(const Arguments& args);
+Handle<Value> Keys(const Arguments& args);
 
 void Init(Handle<Object> target)
 {
   HandleScope scope;
   target->Set(String::NewSymbol("sysconf"), FunctionTemplate::New(Sysconf)->GetFunction());
+  target->Set(String::NewSymbol("keys"), FunctionTemplate::New(Keys)->GetFunction());
 };
 
 Handle<Value> Sysconf(const Arguments& args)
@@ -40,6 +42,65 @@ Handle<Value> Sysconf(const Arguments& args)
     return ThrowException(Exception::Error(String::New("Invalid parameters")));
   } 
 }
+
+Handle<Value> Keys(const Arguments& args)
+{
+  HandleScope scope;
+  Local<Object> obj = Object::New();
+#ifdef _SC_ARG_MAX
+  obj->Set(String::New("_SC_ARG_MAX"), Number::New(_SC_ARG_MAX));
+#endif
+#ifdef _SC_CHILD_MAX
+  obj->Set(String::New("_SC_CHILD_MAX"), Number::New(_SC_CHILD_MAX));
+#endif
+
+#ifdef _SC_HOST_NAME_MAX
+  obj->Set(String::New("_SC_HOST_NAME_MAX"), Number::New(_SC_HOST_NAME_MAX));
+#endif
+
+#ifdef _SC_LOGIN_NAME_MAX
+  obj->Set(String::New("_SC_LOGIN_NAME_MAX"), Number::New(_SC_LOGIN_NAME_MAX));
+#endif
+
+#ifdef _SC_OPEN_MAX
+  obj->Set(String::New("_SC_OPEN_MAX"), Number::New(_SC_OPEN_MAX));
+#endif
+
+#ifdef _SC_PAGESIZE
+  obj->Set(String::New("_SC_PAGESIZE"), Number::New(_SC_PAGESIZE));
+#endif
+
+#ifdef _SC_RE_DUP_MAX
+  obj->Set(String::New("_SC_RE_DUP_MAX"), Number::New(_SC_RE_DUP_MAX));
+#endif
+
+#ifdef _SC_STREAM_MAX
+  obj->Set(String::New("_SC_STREAM_MAX"), Number::New(_SC_STREAM_MAX));
+#endif
+
+#ifdef _SC_SYMLOOP_MAX
+  obj->Set(String::New("_SC_SYMLOOP_MAX"), Number::New(_SC_SYMLOOP_MAX));
+#endif
+
+#ifdef _SC_TTY_NAME_MAX
+  obj->Set(String::New("_SC_TTY_NAME_MAX"), Number::New(_SC_TTY_NAME_MAX));
+#endif
+
+#ifdef _SC_TZNAME_MAX
+  obj->Set(String::New("_SC_TZNAME_MAX"), Number::New(_SC_TZNAME_MAX));
+#endif
+
+#ifdef _SC_VERSION
+  obj->Set(String::New("_SC_VERSION"), Number::New(_SC_VERSION));
+#endif
+
+#ifdef _SC_CLK_TCK
+  obj->Set(String::New("_SC_CLK_TCK"), Number::New(_SC_CLK_TCK));
+#endif
+
+  return scope.Close(obj);
+}
+
 
 
 extern "C" {
